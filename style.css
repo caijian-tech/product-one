@@ -1,41 +1,83 @@
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --container-bg: #fff;
+    --btn-bg: #4CAF50;
+    --btn-hover: #45a049;
+    --theme-btn-bg: #333;
+    --theme-btn-text: #f0f0f0;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --container-bg: #1e1e1e;
+    --btn-bg: #66bb6a;
+    --btn-hover: #81c784;
+    --theme-btn-bg: #f0f0f0;
+    --theme-btn-text: #333;
+}
+
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
     text-align: center;
+    background-color: var(--container-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
 }
 
 #generator-btn {
-    padding: 10px 20px;
-    font-size: 1.2rem;
+    padding: 12px 24px;
+    font-size: 1.1rem;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
     border: none;
-    background-color: #4CAF50;
+    background-color: var(--btn-bg);
     color: white;
     margin-bottom: 20px;
+    transition: background-color 0.2s, transform 0.1s;
+    font-weight: 600;
+}
+
+#generator-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+#generator-btn:active {
+    transform: scale(0.98);
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--theme-btn-bg);
+    color: var(--theme-btn-text);
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 #lotto-numbers-container {
     display: flex;
     justify-content: center;
-    gap: 10px;
-}
-
-lotto-ball {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }

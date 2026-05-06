@@ -10,21 +10,26 @@ This is a simple web application that generates random lottery numbers.
 *   Displays the numbers in a visually appealing way.
 *   Modern and responsive design.
 
-## Current Plan
+## Implemented Features
 
 *   **index.html:**
-    *   Change the title to "Lotto Number Generator".
-    *   Add a main container for the application.
-    *   Inside the container, add a title `<h1>`.
-    *   Add a button to trigger the number generation.
-    *   Add a container where the generated numbers will be displayed.
+    *   Changed the title to "로또 번호 추첨기".
+    *   Added a main container for the application.
+    *   Inside the container, added a title `<h1>`.
+    *   Added a button to trigger the number generation.
+    *   Added a container where the generated numbers will be displayed.
 *   **style.css:**
-    *   Add styles for the main container, button, and the number display area.
-    *   Use a modern and visually appealing design.
-    *   Center the content.
-    *   Style the lottery numbers.
+    *   Added styles for the main container, button, and the number display area.
+    *   Used a modern and visually appealing design.
+    *   Centered the content.
+    *   Styled the lottery numbers.
 *   **main.js:**
-    *   Create a function to generate 6 unique random numbers between 1 and 45.
-    *   Add an event listener to the button.
+    *   Created a function to generate 6 unique random numbers between 1 and 45.
+    *   Added an event listener to the button.
     *   When the button is clicked, call the number generation function and display the numbers in the designated container.
-    *   Create a web component for the lottery balls.
+    *   Created a web component for the lottery balls.
+
+## Current Plan
+
+*   Translate the application to Korean.
+    *   Update `index.html` with Korean text.

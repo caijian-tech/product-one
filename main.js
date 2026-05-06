@@ -1,3 +1,21 @@
+// Theme Toggle Logic
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved theme
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    body.classList.add('dark-mode');
+    themeToggle.textContent = 'Light Mode';
+}
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
+    themeToggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
 class LottoBall extends HTMLElement {
     constructor() {
         super();
@@ -21,6 +39,11 @@ class LottoBall extends HTMLElement {
                 font-weight: bold;
                 color: white;
                 background-color: ${this.getColor(number)};
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                transition: transform 0.3s ease;
+            }
+            .ball:hover {
+                transform: scale(1.1) rotate(10deg);
             }
         `;
 
@@ -30,11 +53,11 @@ class LottoBall extends HTMLElement {
 
     getColor(number) {
         const num = parseInt(number);
-        if (num <= 10) return '#f44336';
-        if (num <= 20) return '#4CAF50';
-        if (num <= 30) return '#2196F3';
-        if (num <= 40) return '#ffeb3b';
-        return '#9C27B0';
+        if (num <= 10) return '#fcc419'; // Yellow
+        if (num <= 20) return '#4dabf7'; // Blue
+        if (num <= 30) return '#ff6b6b'; // Red
+        if (num <= 40) return '#868e96'; // Grey
+        return '#51cf66'; // Green
     }
 }
 
@@ -49,9 +72,13 @@ document.getElementById('generator-btn').addEventListener('click', () => {
         numbers.add(Math.floor(Math.random() * 45) + 1);
     }
 
-    for (const number of numbers) {
-        const lottoBall = document.createElement('lotto-ball');
-        lottoBall.setAttribute('number', number);
-        lottoNumbersContainer.appendChild(lottoBall);
-    }
+    const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
+
+    sortedNumbers.forEach((number, index) => {
+        setTimeout(() => {
+            const lottoBall = document.createElement('lotto-ball');
+            lottoBall.setAttribute('number', number);
+            lottoNumbersContainer.appendChild(lottoBall);
+        }, index * 100);
+    });
 });
